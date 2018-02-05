@@ -6,6 +6,8 @@ to-do
 * ~~install vue.js~~
 * ~~pull card data from deckofcardsapi~~
 * ~~draw and show cards~~
+* show workout totals
 * add draw more button
+* style page
 * ability to alter excerises per suit
 * ability to scale values
