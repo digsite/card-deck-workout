@@ -3,13 +3,27 @@
 <head>
   <title>Card Deck Workout</title>
   <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
   <div id="app">
     <!--<img src="https://vuejs.org/images/logo.png" alt="Vue logo">-->
     <h1>{{ header }}</h1>
-    <!--
+    <dl>
+      <dt>HEARTS</dt>
+      <dd>Push-ups</dd>
+      <dt>DIAMONDS</dt>
+      <dd>Sit-ups</dd>
+      <dt>SPADES</dt>
+      <dd>Squats</dd>
+      <dt>CLUBS</dt>
+      <dd>Jumping Jacks</dd>
+    </dl>
     <ul>
+      <li v-for="card in cards">
+        <strong>{{ card.value }}</strong> of <strong>{{ card.suit }}</strong>
+      </li>
+      <!--
       <li>
         To learn more about Vue, visit
         <a :href="docsURL" target="_blank">
@@ -28,8 +42,8 @@
           the forum
         </a>
       </li>
+      -->
     </ul>
-    -->
   </div>
 
   <script>
@@ -39,7 +53,9 @@
         header: 'Your Card Deck Workout',
         docsURL: 'http://vuejs.org/guide/',
         discordURL: 'https://chat.vuejs.org',
-        forumURL: 'http://forum.vuejs.org/'
+        forumURL: 'http://forum.vuejs.org/',
+
+        cards: [],
       },
       methods: {
         humanizeURL: function (url) {
@@ -47,6 +63,10 @@
             .replace(/^https?:\/\//, '')
             .replace(/\/$/, '')
         }
+      },
+      mounted() {
+        axios.get("https://deckofcardsapi.com/api/deck/new/draw/?count=5")
+          .then(response => {this.cards = response.data.cards});
       }
     })
   </script>

@@ -4,8 +4,8 @@ An app that will give you a workout based on drawing cards from a standard deck 
 
 to-do
 * ~~install vue.js~~
-* pull card data from deckofcardsapi
-* draw and show cards
+* ~~pull card data from deckofcardsapi~~
+* ~~draw and show cards~~
 * add draw more button
 * ability to alter excerises per suit
 * ability to scale values
