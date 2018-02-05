@@ -1,20 +1,54 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Card Deck Workout</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-    <div id="cards">
-      <p>Loading...</p>
-    </div>
+<head>
+  <title>Card Deck Workout</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <!--<img src="https://vuejs.org/images/logo.png" alt="Vue logo">-->
+    <h1>{{ header }}</h1>
+    <!--
+    <ul>
+      <li>
+        To learn more about Vue, visit
+        <a :href="docsURL" target="_blank">
+          {{ humanizeURL(docsURL) }}
+        </a>
+      </li>
+      <li>
+        For live help with simple questions, check out
+        <a :href="discordURL" target="_blank">
+          the Discord chat
+        </a>
+      </li>
+      <li>
+        For more complex questions, post to
+        <a :href="forumURL" target="_blank">
+          the forum
+        </a>
+      </li>
+    </ul>
+    -->
+  </div>
 
-    <script type="text/javascript" src="https://unpkg.com/vue"></script>
-    <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type="text/javascript">
-        var cards = new Vue({
-            el: '#cards',
-        });
-    </script>
-  </body>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        header: 'Your Card Deck Workout',
+        docsURL: 'http://vuejs.org/guide/',
+        discordURL: 'https://chat.vuejs.org',
+        forumURL: 'http://forum.vuejs.org/'
+      },
+      methods: {
+        humanizeURL: function (url) {
+          return url
+            .replace(/^https?:\/\//, '')
+            .replace(/\/$/, '')
+        }
+      }
+    })
+  </script>
+</body>
 </html>
