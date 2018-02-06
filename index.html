@@ -3,71 +3,107 @@
 <head>
   <title>Card Deck Workout</title>
   <script src="https://unpkg.com/vue"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
   <div id="app">
-    <!--<img src="https://vuejs.org/images/logo.png" alt="Vue logo">-->
-    <h1>{{ header }}</h1>
+    
+    <h1 v-html="header"></h1>
+    <h2>{{ deck_id }}</h2>
     <dl>
-      <dt>HEARTS</dt>
+      <dt>&hearts; HEARTS</dt>
       <dd>Push-ups</dd>
-      <dt>DIAMONDS</dt>
+      <dt>&diams; DIAMONDS</dt>
       <dd>Sit-ups</dd>
-      <dt>SPADES</dt>
+      <dt>&spades; SPADES</dt>
       <dd>Squats</dd>
-      <dt>CLUBS</dt>
+      <dt>&clubs; CLUBS</dt>
       <dd>Jumping Jacks</dd>
     </dl>
+    <h2>Your Cards</h2>
     <ul>
       <li v-for="card in cards">
         <strong>{{ card.value }}</strong> of <strong>{{ card.suit }}</strong>
       </li>
-      <!--
-      <li>
-        To learn more about Vue, visit
-        <a :href="docsURL" target="_blank">
-          {{ humanizeURL(docsURL) }}
-        </a>
-      </li>
-      <li>
-        For live help with simple questions, check out
-        <a :href="discordURL" target="_blank">
-          the Discord chat
-        </a>
-      </li>
-      <li>
-        For more complex questions, post to
-        <a :href="forumURL" target="_blank">
-          the forum
-        </a>
-      </li>
-      -->
     </ul>
+    <h3>Your Workout</h3>
+    <ol>
+      <li v-for="(reps, key) in workout">
+        <strong>{{ reps }}</strong> {{ reps | pluralize(getExercise(key)) }}
+      </li>
+    </ol>
   </div>
 
   <script>
+    const ExerciseKey = {
+      HEARTS: 'push-up',
+      DIAMONDS: 'sit-up',
+      SPADES: 'squat',
+      CLUBS: 'jumping jack'
+    }
+
+    function getReps(card) {
+      let count = parseInt(card);
+      switch (card) {
+        case 'ACE':
+          count = 1;
+          break;
+        case 'KING':
+        case 'QUEEN':
+        case 'JACK':
+          count = 10;
+          break;
+      }
+      return count;
+    }
+
     var app = new Vue({
       el: '#app',
       data: {
-        header: 'Your Card Deck Workout',
-        docsURL: 'http://vuejs.org/guide/',
-        discordURL: 'https://chat.vuejs.org',
-        forumURL: 'http://forum.vuejs.org/',
-
+        header: '&hearts; Card &spades; Deck &diams; Workout &clubs;',
+        deck_id: 'new',
         cards: [],
+        workout: {},
+      },
+      mounted() {
+        this.freshDraw();
       },
       methods: {
+        getExercise(suit) {
+          return ExerciseKey[suit];
+        },
+        freshDraw() {
+          axios.get("https://deckofcardsapi.com/api/deck/new/draw/?count=5")
+            .then((response) => {
+              this.cards = response.data.cards;
+              this.deck_id = response.data.deck_id;
+              this.countCards();
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        },
+        resetWorkout(){
+          this.workout = {};
+        },
+        countCards() {
+          this.resetWorkout();
+          this.cards.forEach(function(c) {
+            if(app.workout.hasOwnProperty(c.suit)){
+              app.workout[c.suit] += getReps(c.value);
+            }
+            else{
+              app.workout[c.suit] = getReps(c.value);
+            }
+          });
+        },
         humanizeURL: function (url) {
           return url
             .replace(/^https?:\/\//, '')
             .replace(/\/$/, '')
         }
       },
-      mounted() {
-        axios.get("https://deckofcardsapi.com/api/deck/new/draw/?count=5")
-          .then(response => {this.cards = response.data.cards});
-      }
     })
   </script>
 </body>
