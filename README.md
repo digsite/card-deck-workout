@@ -7,7 +7,7 @@ to-do
 * ~~pull card data from deckofcardsapi~~
 * ~~draw and show cards~~
 * ~~show workout totals~~
-* pop JS code into its own file
+* ~~pop JS code into its own file~~
 * add draw more button
 * style page
 * ability to alter exercises per suit
