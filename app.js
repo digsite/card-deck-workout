@@ -32,6 +32,7 @@
     mounted() {
       this.freshDraw();
     },
+
     methods: {
       getExercise(suit) {
         return ExerciseKey[suit];
@@ -41,6 +42,16 @@
           .then((response) => {
             this.cards = response.data.cards;
             this.deck_id = response.data.deck_id;
+            this.countCards();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+      draw(){
+        axios.get("https://deckofcardsapi.com/api/deck/" + this.deck_id + "/draw/?count=5")
+          .then((response) =>{
+            this.cards = response.data.cards;
             this.countCards();
           })
           .catch((error) => {

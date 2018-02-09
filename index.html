@@ -22,6 +22,9 @@
       <dt>&clubs; CLUBS</dt>
       <dd>Jumping Jacks</dd>
     </dl>
+
+    <button v-on:click="draw">Generate New Workout</button>
+
     <h2>Your Cards</h2>
     <ul>
       <li v-for="card in cards">
@@ -30,8 +33,8 @@
     </ul>
     <h3>Your Workout</h3>
     <ol>
-      <li v-for="(reps, key) in workout">
-        <strong>{{ reps }}</strong> {{ reps | pluralize(getExercise(key)) }}
+      <li v-for="(reps, k) in workout">
+        <strong>{{ reps }}</strong> {{ reps | pluralize(getExercise(k)) }}
       </li>
     </ol>
   </div>
