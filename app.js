@@ -29,6 +29,7 @@
       cards: [],
       workout: {},
     },
+    
     mounted() {
       this.freshDraw();
     },
@@ -50,10 +51,19 @@
       },
       draw(){
         axios.get("https://deckofcardsapi.com/api/deck/" + this.deck_id + "/draw/?count=5")
-          .then((response) =>{
+          .then((response) => {
             this.cards = response.data.cards;
             this.countCards();
+            if(response.data.remaining > 5){
+              this.shuffle();
+            }
           })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+      shuffle(){
+        axios.get("https://deckofcardsapi.com/api/deck/" + this.deck_id + "/shuffle/")
           .catch((error) => {
             console.log(error);
           });
