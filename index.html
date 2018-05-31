@@ -3,7 +3,7 @@
 <head>
   <title>Card Deck Workout</title>
 
-  <script src="https://unpkg.com/vue"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
@@ -27,7 +27,11 @@
     <h2>Your Cards</h2>
     <ul>
       <li v-for="card in cards">
-        <strong>{{ card.value }}</strong> of <strong>{{ card.suit }}</strong>
+        <img
+          v-bind:src="card.image"
+          v-bind:alt="card.value + ' of ' + card.suit"
+          v-bind:title="card.value + ' of ' + card.suit"
+        />
       </li>
     </ul>
     <h3>Your Workout</h3>

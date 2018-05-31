@@ -24,12 +24,12 @@
   var app = new Vue({
     el: '#app',
     data: {
-      header: '&hearts; Card &spades; Deck &diams; Workout &clubs;',
+      header: '&hearts; Card &clubs; Deck &diams; Workout &spades;',
       deck_id: 'new',
       cards: [],
       workout: {},
     },
-    
+
     mounted() {
       this.freshDraw();
     },
