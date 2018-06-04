@@ -152,6 +152,13 @@ h2.headline {
   margin-right: 0.25em;
 }
 
+.site-footer {
+  font-family: 'Muli', sans-serif;
+  font-size: 0.75em; /*12px/16px*/
+  text-align: center;
+}
+
+
 /* RESPONSIVE STYLES */
 @media only screen and (min-width: 500px) {
   h1.headline {
