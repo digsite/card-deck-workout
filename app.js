@@ -24,7 +24,7 @@
   var app = new Vue({
     el: '#app',
     data: {
-      header: '&hearts; Card &clubs; Deck &diams; Workout &spades;',
+      header: '&hearts; &clubs; Card Deck Workout &diams; &spades;',
       deck_id: 'new',
       cards: [],
       workout: {},

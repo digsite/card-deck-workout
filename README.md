@@ -9,6 +9,6 @@ to-do
 * ~~show workout totals~~
 * ~~pop JS code into its own file~~
 * ~~add draw more button~~
-* style page
+* ~~style page~~
 * ability to alter exercises per suit
 * ability to scale values

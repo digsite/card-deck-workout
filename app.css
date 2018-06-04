@@ -1,0 +1,218 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: radial-gradient(circle, #1fb446, #1d9e35, #198825, #137315, #0b5f04);
+  color: #f7f7f7;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  padding: 1em;
+}
+
+.suit {
+  display: inline-block;
+  margin: 0 0.5em;
+}
+
+.red {
+  color: #ee0000;
+}
+
+.black {
+  color: #333333;
+}
+
+.headline {
+  font-family: 'Zilla Slab', serif;
+  color: gold;
+  text-shadow: 0 0 0.25em #000000;
+  text-align: center;
+  margin: 0.5em 0;
+}
+
+h1.headline {
+  font-size: 1.5em;
+}
+
+h2.headline {
+  font-size: 1.25em;
+}
+
+.exercises {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: auto auto;
+  grid-gap: 1em;
+  margin: auto;
+}
+
+.exercise {
+  text-align: center;
+  padding: 0.5em 0;
+  font-size: 0.75em; /*12px/16px*/
+  width: 13em; /*156px/12px*/
+}
+.exercise hr {
+  margin: 0.5em auto;
+  width: 100%;
+  height: 1px;
+  border: 0 none;
+  background-color: #c4c4c4;
+}
+.exercise dt {
+  font-family: 'Zilla Slab', serif;
+  text-transform: uppercase;
+}
+.exercise dd {
+  font-family: 'Muli', sans-serif;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin: 1em 0;
+}
+
+.action {
+  appearance: none;
+  display: inline-block;
+  outline: 0;
+  border: 1px solid #333333;
+  border-radius: 0.25em;
+  color: #ffffff;
+  background-image: linear-gradient(to right, #ee0000, #333333);
+  font-size: 1em;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  box-shadow: 0 0 0.25em #000000;
+  text-shadow: 0 0 0.125em #000000;
+  font-family: 'Muli', sans-serif;
+  transition: box-shadow 0.2s;
+}
+.action:hover {
+  box-shadow: 0 0 0.125em #000000;
+}
+.action:active {
+  box-shadow: none;
+}
+
+
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: block;
+  text-align: center;
+  height: 4.6875em; /*75px/16px*/
+  margin-bottom: 0.5em; /*8px/16px*/
+}
+.card img {
+  width: auto;
+  height: 100%;
+}
+.card + .card {
+  margin-left: 0.5em;
+}
+
+.workout {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 1em;
+  display: block;
+  font-family: 'Muli', sans-serif;
+  text-align: center;
+}
+
+.workout-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.reps {
+  display: inline-block;
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-right: 0.25em;
+}
+
+/* RESPONSIVE STYLES */
+@media only screen and (min-width: 500px) {
+  h1.headline {
+    font-size: 2em;
+  }
+
+  h2.headline {
+    font-size: 1.5em;
+  }
+
+  .exercise {
+    font-size: 0.875em; /*14px/16px*/
+    width: 12em; /*154px/14px*/
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .exercise {
+    font-size: 1em;
+    width: 12.5em; /*200px/16px*/
+  }
+
+  .results {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    max-width: 700px;
+  }
+
+  .result-cards,
+  .result-workout {
+    padding: 0 1em;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .card {
+    height: 7.8125em; /*125px/16px*/
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .exercises {
+    display: flex;
+  }
+
+  .exercise {
+    padding: 0.5em 1em;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .card {
+    height: 11em; /*176px/16px*/
+  }
+
+  .results {
+    max-width: 1000px;
+  }
+
+  .workout {
+    font-size: 1.5em;
+  }
+}

@@ -3,6 +3,9 @@
 <head>
   <title>Card Deck Workout</title>
 
+  <link href="https://fonts.googleapis.com/css?family=Muli|Zilla+Slab" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="app.css">
+
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -10,36 +13,60 @@
 <body>
   <div id="app">
 
-    <h1 v-html="header"></h1>
-    <dl>
-      <dt>&hearts; HEARTS</dt>
-      <dd>Push-ups</dd>
-      <dt>&diams; DIAMONDS</dt>
-      <dd>Sit-ups</dd>
-      <dt>&spades; SPADES</dt>
-      <dd>Squats</dd>
-      <dt>&clubs; CLUBS</dt>
-      <dd>Jumping Jacks</dd>
+    <h1 v-html="header" class="headline"></h1>
+    <dl class="exercises">
+      <div class="exercise">
+        <dt><span class="suit red">&hearts;</span>Hearts<span class="suit red">&hearts;</span></dt>
+        <hr/>
+        <dd>Push-ups</dd>
+      </div>
+      <div class="exercise">
+        <dt><span class="suit red">&diams;</span>Diamonds<span class="suit red">&diams;</span></dt>
+        <hr/>
+        <dd>Sit-ups</dd>
+      </div>
+      <div class="exercise">
+        <dt><span class="suit black">&spades;</span>Spades<span class="suit black">&spades;</span></dt>
+        <hr/>
+        <dd>Squats</dd>
+      </div>
+      <div class="exercise">
+        <dt><span class="suit black">&clubs;</span>Clubs<span class="suit black">&clubs;</span></dt>
+        <hr/>
+        <dd>Jumping Jacks</dd>
+      </div>
     </dl>
 
-    <button v-on:click="draw">Generate New Workout</button>
+    <div class="actions">
+      <button class="action" v-on:click="draw">Generate New Workout</button>
+    </div>
 
-    <h2>Your Cards</h2>
-    <ul>
-      <li v-for="card in cards">
-        <img
-          v-bind:src="card.image"
-          v-bind:alt="card.value + ' of ' + card.suit"
-          v-bind:title="card.value + ' of ' + card.suit"
-        />
-      </li>
-    </ul>
-    <h3>Your Workout</h3>
-    <ol>
-      <li v-for="(reps, k) in workout">
-        <strong>{{ reps }}</strong> {{ reps | pluralize(getExercise(k)) }}
-      </li>
-    </ol>
+    <div class="results">
+      
+      <div class="result-cards">
+        <h2 class="headline">Your Cards</h2>
+        <ul class="cards">
+          <li class="card" v-for="card in cards">
+            <img
+              v-bind:src="card.image"
+              v-bind:alt="card.value + ' of ' + card.suit"
+              v-bind:title="card.value + ' of ' + card.suit"
+            />
+          </li>
+        </ul>
+      </div>
+
+      <div class="result-workout">
+        <h2 class="headline">Your Workout</h2>
+        <ol class="workout">
+          <li class="workout-item" v-for="(reps, k) in workout">
+            <strong class="reps">{{ reps }}</strong>
+            <span>{{ reps | pluralize(getExercise(k)) }}</span>
+          </li>
+        </ol>
+      </div>
+
+    </div>
   </div>
 
   <script src="app.js"></script>
