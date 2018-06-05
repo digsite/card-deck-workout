@@ -45,6 +45,15 @@ h2.headline {
   font-size: 1.25em;
 }
 
+.info {
+  font-size: 0.75em; /*12px/16px*/
+  font-family: 'Muli', sans-serif;
+  margin: 0 auto 2em;
+  width: 85%;
+  max-width: 500px;
+  text-align: justify;
+}
+
 .exercises {
   display: grid;
   justify-content: center;
@@ -197,6 +206,10 @@ h2.headline {
 @media only screen and (min-width: 800px) {
   .card {
     height: 7.8125em; /*125px/16px*/
+  }
+
+  .info {
+    max-width: 700px;
   }
 }
 
