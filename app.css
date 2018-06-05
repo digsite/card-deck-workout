@@ -165,6 +165,7 @@ h2.headline {
   font-family: 'Muli', sans-serif;
   font-size: 0.75em; /*12px/16px*/
   text-align: center;
+  padding: 1em 0;
 }
 
 
