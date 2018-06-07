@@ -30,7 +30,7 @@
       workout: {},
     },
 
-    mounted() {
+    mounted: function (){
       this.freshDraw();
     },
 
