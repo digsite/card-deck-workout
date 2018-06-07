@@ -39,34 +39,31 @@
         return ExerciseKey[suit];
       },
       freshDraw: function() {
-        axios.get("https://deckofcardsapi.com/api/deck/new/draw/?count=5")
-          .then((response) => {
+        axios
+          .get("https://deckofcardsapi.com/api/deck/new/draw/?count=5")
+          .then(response => {
             this.cards = response.data.cards;
             this.deck_id = response.data.deck_id;
             this.countCards();
           })
-          .catch((error) => {
-            console.log(error);
-          });
+          .catch(error => console.log(error));
       },
       draw: function () {
-        axios.get("https://deckofcardsapi.com/api/deck/" + this.deck_id + "/draw/?count=5")
-          .then((response) => {
+        axios
+          .get("https://deckofcardsapi.com/api/deck/" + this.deck_id + "/draw/?count=5")
+          .then(response => {
             this.cards = response.data.cards;
             this.countCards();
             if(response.data.remaining > 5){
               this.shuffle();
             }
           })
-          .catch((error) => {
-            console.log(error);
-          });
+          .catch(error => console.log(error));
       },
       shuffle: function () {
-        axios.get("https://deckofcardsapi.com/api/deck/" + this.deck_id + "/shuffle/")
-          .catch((error) => {
-            console.log(error);
-          });
+        axios
+          .get("https://deckofcardsapi.com/api/deck/" + this.deck_id + "/shuffle/")
+          .catch(error => console.log(error));
       },
       resetWorkout: function () {
         this.workout = {};
