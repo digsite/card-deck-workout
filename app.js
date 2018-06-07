@@ -35,10 +35,10 @@
     },
 
     methods: {
-      getExercise(suit) {
+      getExercise: function(suit) {
         return ExerciseKey[suit];
       },
-      freshDraw() {
+      freshDraw: function() {
         axios.get("https://deckofcardsapi.com/api/deck/new/draw/?count=5")
           .then((response) => {
             this.cards = response.data.cards;
@@ -49,7 +49,7 @@
             console.log(error);
           });
       },
-      draw(){
+      draw: function () {
         axios.get("https://deckofcardsapi.com/api/deck/" + this.deck_id + "/draw/?count=5")
           .then((response) => {
             this.cards = response.data.cards;
@@ -62,16 +62,16 @@
             console.log(error);
           });
       },
-      shuffle(){
+      shuffle: function () {
         axios.get("https://deckofcardsapi.com/api/deck/" + this.deck_id + "/shuffle/")
           .catch((error) => {
             console.log(error);
           });
       },
-      resetWorkout(){
+      resetWorkout: function () {
         this.workout = {};
       },
-      countCards() {
+      countCards: function () {
         this.resetWorkout();
         this.cards.forEach(function(c) {
           if(app.workout.hasOwnProperty(c.suit)){
