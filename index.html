@@ -10,7 +10,7 @@
 
     gtag('config', 'UA-68295470-2');
   </script>
-  
+
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({
@@ -71,7 +71,7 @@
         <ul class="cards">
           <li class="card" v-for="card in cards">
             <img
-              v-bind:src="card.image"
+              v-bind:src="card.image.replace('http://', 'https://')"
               v-bind:alt="card.value + ' of ' + card.suit"
               v-bind:title="card.value + ' of ' + card.suit"
             />
